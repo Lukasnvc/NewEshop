@@ -217,6 +217,12 @@ body main #products {
     gap: 10px;
   }
 }
+body main #products .noliked {
+  font-size: 5rem;
+  color: #F68E5F;
+  margin-top: 25vh;
+  margin-left: 40vw;
+}
 body main #products .product {
   padding: 0;
   position: relative;

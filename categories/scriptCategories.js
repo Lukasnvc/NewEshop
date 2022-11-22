@@ -118,6 +118,11 @@ const filteredCategorie = (data) => {
         }
       })
     })
+    if (likeArr.length<1) {
+      console.log('no like items')
+      noLiked()
+    } 
+    
     draw(likeArr);
     search(likeArr);
     colorSearch(likeArr);
@@ -136,6 +141,13 @@ const filteredCategorie = (data) => {
   }
 }
 
+
+const noLiked = () => {
+  const h1 = document.createElement('h1');
+  h1.setAttribute('class', 'noliked');
+  h1.textContent='No Liked Items ;(';
+  products.appendChild(h1);
+}
 
 const cartCheck = (data) => {
   data.forEach(element => {
