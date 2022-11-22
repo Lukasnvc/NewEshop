@@ -91,6 +91,7 @@ const getData = () => {
 	return result.data
 })
 .then((data) => {
+  cartDropdownItem.innerHTML='';
   products.innerHTML='';
   cartCheck(data);
 	draw(data);

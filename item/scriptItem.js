@@ -178,6 +178,7 @@ const itemPicker = (data) => {
   data.forEach(element => {
     if (element.id === +id){
       const likedArr = JSON.parse(localStorage.getItem('liked')) || [];
+      itemImg.innerHTML='';
       draw(element, likedArr);
       toReserve(element);
     }

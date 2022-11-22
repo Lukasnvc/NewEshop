@@ -95,6 +95,7 @@ const getData = () => {
 	return result.data
 })
 .then((data) => {
+  cartDropdownItem.innerHTML='';
   products.innerHTML='';
 	filteredCategorie(data);
   cartCheck(data);
