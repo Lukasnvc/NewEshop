@@ -141,6 +141,7 @@ const filtring = (data) => {
   let totalPrice = [];
   let totalPcs = [];
   if (totalPrice.length<1) {
+    totalPcsH2.innerHTML='';
     cartTotal.innerHTML = 'No items in cart';
     buy.style.display= 'none';
     deleteAll.style.display= 'none';
@@ -329,7 +330,7 @@ const editProduct = (id, color, name, sizes, reserve, description, price, picUrl
     }
   })
   .then((result) => {
-    cartInfo.innerHTML='';
+   
     cart.style.color= 'black';
     getData()
   })

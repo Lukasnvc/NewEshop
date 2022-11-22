@@ -277,6 +277,11 @@ toCart.addEventListener('click', (e) => {
     parsedSize[pickedSize]-=1;
     parsedReserve[pickedSize]+=1;
 
+    setTimeout(() => {
+      dropdownCart.style.display = 'none';
+    }, 3000)
+  
+
     editProduct(data.id, data.color, data.name, parsedSize, parsedReserve, data.description, data.price, data.picUrl, data.type);
     
   } else {
@@ -312,6 +317,7 @@ const editProduct = (id, color, name, sizes, reserve, description, price, picUrl
 	})
 	.then((result) => {
 		itemImg.innerHTML='';
+    dropdownCart.style.display = 'block';
 		getData()
 	})
 }
