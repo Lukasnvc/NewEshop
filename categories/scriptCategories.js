@@ -192,7 +192,7 @@ const draw = (data) => {
     img.addEventListener('click', (e) => {
       e.preventDefault();
       pushUser(element);
-      window.location.href = '/item/item.html';
+      window.location.href = 'item.html';
     })
 
     likedBtn.addEventListener('click', (e) => {
