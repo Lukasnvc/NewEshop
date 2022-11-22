@@ -512,7 +512,7 @@ const categorieSearch = (data) => {
 mainIndex.addEventListener('click', (e) => {
 	e.preventDefault()
 	localStorage.setItem('categorie', 'all');
-	window.location.href = '../index.html';
+	window.location.href = 'index.html';
 })
 
 
