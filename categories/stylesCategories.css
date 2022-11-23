@@ -112,12 +112,26 @@ body header nav .cart {
 body header nav .cart .forCart {
   padding: 30px 20px;
   font-size: 1.7rem;
+  position: relative;
   transition: all 0.5s ease;
 }
 body header nav .cart .forCart:hover {
   background-color: #586BA4;
   cursor: pointer;
   color: #F76C5E;
+}
+body header nav .cart .forCart #cartPcs {
+  position: absolute;
+  font-family: "Roboto Condensed", sans-serif;
+  top: 2px;
+  right: 5px;
+  font-size: 1.1rem;
+  border: 2px solid whitesmoke;
+  padding: 2px 5px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  color: whitesmoke;
 }
 body header nav .cart #cartsDp {
   display: none;

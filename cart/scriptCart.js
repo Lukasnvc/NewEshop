@@ -22,6 +22,7 @@ const sweatshirts1 = document.querySelector('#sweatshirts1');
 const hats1 = document.querySelector('#hats1');
 const liked1 = document.querySelector('#liked1');
 const cart1 = document.querySelector('#cart1');
+const cartPcs = document.querySelector('#cartPcs');
 
 mainIndex1.addEventListener('click', (e) => {
   e.preventDefault()
@@ -141,6 +142,7 @@ const filtring = (data) => {
   let totalPrice = [];
   let totalPcs = [];
   if (totalPrice.length<1) {
+    cartPcs.style.display= 'none';
     totalPcsH2.innerHTML='';
     cartTotal.innerHTML = 'No items in cart';
     buy.style.display= 'none';
@@ -252,6 +254,8 @@ const draw = (product, index, x, totalPrice, totalPcs) => {
   cartTotal.textContent= `Total ${sum}$`;
   sumPcs= totalPcs.reduce((a,b) => a + b, 0);
   totalPcsH2.textContent= `${sumPcs} pcs.`
+  cartPcs.textContent = sumPcs; 
+  cartPcs.style.display = 'block';
   buy.style.display = 'block';
   deleteAll.style.display = 'block';
   buyDeleteReserve(product, index);

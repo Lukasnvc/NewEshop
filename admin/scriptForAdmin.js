@@ -137,31 +137,29 @@ const drawSlider = (data) => {
 
 getSliderData()
 
-fetch('	https://testapi.io/api/lukasnvc/resource/adminLogin',
-	{
-		method: 'GET',
-		headers: {
-			'Content-Type':
-			'application/json'
-		}
-	})
-	.then((response) => {
-		if (response.ok) {
-			return response.json()
-		}
-	})
-	.then((result) => {
-		return result.data
-	})
-	.then((data) => {
-		loginCheck(data)
-})
+// fetch('	https://testapi.io/api/lukasnvc/resource/adminLogin',
+// 	{
+// 		method: 'GET',
+// 		headers: {
+// 			'Content-Type':
+// 			'application/json'
+// 		}
+// 	})
+// 	.then((response) => {
+// 		if (response.ok) {
+// 			return response.json()
+// 		}
+// 	})
+// 	.then((result) => {
+// 		return result.data
+// 	})
+// 	.then((data) => {
+// 		loginCheck(data)
+// })
 
-const loginCheck = (data) => {
 	login.addEventListener('click', (e) => {
 		e.preventDefault();
-		data.forEach(element => {
-			if (element.username===adminName.value && element.password===password.value) {
+			if (adminName.value==='Lukas' && password.value==='123' || adminName.value==='Gytis' && password.value==='123' ) {
 				loginDiv.style.display= 'none';
 				mainBtns.style.display= 'block';
 				forAdmin.style.display= "block";
@@ -169,10 +167,8 @@ const loginCheck = (data) => {
 			} else {
 				error.style.display= 'block';
 			}
-		})
 		password.value='';
 	})
-}
 
 logout.addEventListener('click', () => {
 	loginDiv.style.display= 'block';

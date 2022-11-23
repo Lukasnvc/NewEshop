@@ -99,7 +99,7 @@ const getData = () => {
   products.innerHTML='';
 	filteredCategorie(data);
   cartCheck(data);
-  filtring(data);
+  itemCount(data);
 })
 }
 
@@ -147,6 +147,7 @@ const noLiked = () => {
   h1.setAttribute('class', 'noliked');
   h1.textContent='No Liked Items ;(';
   products.appendChild(h1);
+  liked.style.color= 'black'
 }
 
 const cartCheck = (data) => {
@@ -311,19 +312,26 @@ cart.addEventListener('click', (e) => {
   window.location.href = 'cart.html';
 })
 
-const filtring = (data) => {
+const itemCount = (data) => {
   let totalPrice = [];
+  let countArr =[];
   data.forEach(element => {
-    let b = JSON.parse(element.reserve)
-    b.forEach((x, index) => {
-      
-      if (x>0){
+    const item = JSON.parse(element.reserve)
+    item.forEach((x, index) => {
+      if (x>0) {
+        countArr.push(x)
         cartDraw(element, index, x ,totalPrice);
-        cartPeaklook();
-      } else {
+        cartPeaklook()
       }
     })
   })
+  sumPcs= countArr.reduce((a,b) => a + b, 0);
+  if (sumPcs>0) {
+    cartPcs.textContent = sumPcs; 
+    cartPcs.style.display='block';
+  } else {
+    cartPcs.style.display='none';
+  }
 }
 
 const cartDraw = (product, index, x, totalPrice) => {

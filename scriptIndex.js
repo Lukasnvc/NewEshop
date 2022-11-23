@@ -20,6 +20,11 @@ const sweatshirts1 = document.querySelector('#sweatshirts1');
 const hats1 = document.querySelector('#hats1');
 const liked1 = document.querySelector('#liked1');
 const cart1 = document.querySelector('#cart1');
+const cartPcs = document.querySelector('#cartPcs')
+
+const dropdownCart = document.querySelector('#cartsDp');
+const cartDropdownItem = document.querySelector('#cartDropdownItem');
+const cartTotal = document.querySelector('#cartTotal');
 
 mainIndex1.addEventListener('click', (e) => {
   e.preventDefault()
@@ -92,12 +97,13 @@ const getData = () => {
 })
 .then((data) => {
   cartDropdownItem.innerHTML='';
+
+
   products.innerHTML='';
-  cartCheck(data);
+  itemCount(data);
 	draw(data);
   search(data);
   colorSearch(data);
-  filtring(data);
 })
 }
 
@@ -268,27 +274,6 @@ cart.addEventListener('click', (e) => {
 })
 
 
-
-
-const dropdownCart = document.querySelector('#cartsDp');
-const cartDropdownItem = document.querySelector('#cartDropdownItem');
-const cartTotal = document.querySelector('#cartTotal');
-
-const filtring = (data) => {
-  let totalPrice = [];
-  data.forEach(element => {
-    let b = JSON.parse(element.reserve)
-    b.forEach((x, index) => {
-      
-      if (x>0){
-        cartDraw(element, index, x ,totalPrice);
-        cartPeaklook()
-      } else {
-      }
-    })
-  })
-}
-
 const cartDraw = (product, index, x, totalPrice) => {
   const pic = JSON.parse(product.picUrl);
   
@@ -374,4 +359,179 @@ const drawSlider = (data) => {
     document.getElementById('slide').src = imageSources[index];
     index++;
   } , 2500);
-} 
+}
+
+const itemCount = (data) => {
+  let totalPrice = [];
+  let countArr =[];
+  data.forEach(element => {
+    const item = JSON.parse(element.reserve)
+    item.forEach((x, index) => {
+      if (x>0) {
+        countArr.push(x)
+        cartDraw(element, index, x ,totalPrice);
+        cartPeaklook()
+      }
+    })
+  })
+  sumPcs= countArr.reduce((a,b) => a + b, 0);
+  if (sumPcs>0) {
+    cartPcs.textContent = sumPcs; 
+    cartPcs.style.display='block';
+    console.log('1')
+  } else {
+    cartPcs.style.display='none';
+    console.log('2')
+  }
+}
+
+const loginNav = document.querySelector('#login');
+const logout = document.querySelector('#logout');
+const loginBox = document.querySelector('#loginBox');
+const closeLogin = document.querySelector('#closeLogin');
+const usernameLogin = document.querySelector('#username');
+const passwordLogin = document.querySelector('#password');
+const errorLogin = document.querySelector('#error');
+const loginBtn = document.querySelector('#loginBtn');
+const registerLogin = document.querySelector('#register');
+const registerBox = document.querySelector('#registerBox');
+const closeRegister = document.querySelector('#closeRegister');
+const registerUsername = document.querySelector('#registerUsername');
+const registerPassword1 = document.querySelector('#registerPassword1');
+const registerPassword2 = document.querySelector('#registerPassword2');
+const registerError = document.querySelector('#registerError');
+const registerBtn = document.querySelector('#registerBtn');
+const email = document.querySelector('#email');
+
+
+
+
+const importNewUser = (username, password, email) => {
+	fetch(`https://testapi.io/api/lukasnvc/resource/usersEshop`,
+	{
+		method: 'POST',
+		headers: {
+			'Content-Type':
+			'application/json'
+		},
+		body: JSON.stringify({
+			username: `${username}`,
+      password: `${password}`,
+      liked: '[]',
+      email: `${email}`
+		}) 
+	})
+	.then((response) => {
+		if (response.ok) {
+		}
+	})
+}
+
+const getUserData = () => {
+  fetch('	https://testapi.io/api/lukasnvc/resource/usersEshop',
+{
+  method: 'GET',
+  headers: {
+    'Content-Type':
+    'application/json'
+  }
+})
+.then((response) => {
+  if (response.ok) {
+    return response.json()
+  }
+})
+.then((result) => {
+	return result.data
+})
+.then((data) => {
+  checkUser(data)
+  
+})
+}
+getUserData()
+
+const userLikes = (id, username, password, likes, email) => {
+	fetch(`https://testapi.io/api/lukasnvc/resource/usersEshop/${id}`,
+	{
+		method: 'PUT',
+		headers: {
+			'Content-Type':
+			'application/json'
+		},
+		body: JSON.stringify({
+      username: `${username}`,
+      password: `${password}`,
+      liked: `${likes}`,
+      email: `${email}`
+		}) 
+	})
+	.then((response) => {
+		if (response.ok) {
+			return response.json()
+		}
+	})
+	.then((result) => {
+		console.log('Fetching data : ', result);
+	})
+}
+
+
+
+
+
+loginNav.addEventListener('click', () => {
+  loginBox.style.display = 'flex';
+})
+
+closeLogin.addEventListener('click', () => {
+  loginBox.style.display = 'none';
+})
+
+registerLogin.addEventListener('click', () => {
+  loginBox.style.display = 'none';
+  registerBox.style.display = 'flex';
+})
+
+closeRegister.addEventListener('click', () => {
+  registerBox.style.display = 'none';
+})
+
+logout.addEventListener('click', () => {
+  login.style.display = 'block';
+  logout.style.display = 'none';
+  localStorage.setItem('user', '');
+  localStorage.setItem('state', 'false');
+  getData()
+})
+
+registerBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (registerPassword1.value===registerPassword2.value){
+  importNewUser(registerUsername.value, registerPassword1.value, email.value);
+  registerBox.style.display = 'none';
+  loginBox.style.display = 'flex';
+  usernameLogin.value = registerUsername.value;
+  } else {
+    registerError.style.display = 'block';
+  }
+})
+
+const checkUser = (data) => {
+  loginBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    console.log('click')
+    data.forEach(user => {
+      if (user.username===username.value && user.password===password.value) {
+        loginBox.style.display = 'none';
+        localStorage.setItem('user', user.id);
+        localStorage.setItem('state', 'true');
+        login.style.display = 'none';
+        logout.style.display = 'block';
+
+      } else {
+        errorLogin.style.display = 'block';
+      }
+    })
+  })
+}

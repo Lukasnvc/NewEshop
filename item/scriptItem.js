@@ -155,9 +155,9 @@ const getData = () => {
 })
 .then((data) => {
   cartDropdownItem.innerHTML='';
+  itemCount(data);
   cartCheck(data);
 	itemPicker(data);
-  filtring(data);
 })
 }
 
@@ -322,25 +322,30 @@ const editProduct = (id, color, name, sizes, reserve, description, price, picUrl
 	})
 }
 
-
-const filtring = (data) => {
+const itemCount = (data) => {
   let totalPrice = [];
+  let countArr =[];
   data.forEach(element => {
-    let b = JSON.parse(element.reserve)
-    b.forEach((x, index) => {
-      
-      if (x>0){
+    const item = JSON.parse(element.reserve)
+    item.forEach((x, index) => {
+      if (x>0) {
+        countArr.push(x)
         cartDraw(element, index, x ,totalPrice);
-        cartPeaklook();
-      } else {
+        cartPeaklook()
       }
     })
   })
+  sumPcs= countArr.reduce((a,b) => a + b, 0);
+  if (sumPcs>0) {
+    cartPcs.style.display='block';
+    cartPcs.textContent = sumPcs; 
+  } else {
+    cartPcs.style.display='none';
+  }
 }
 
 const cartDraw = (product, index, x, totalPrice) => {
   const pic = JSON.parse(product.picUrl);
-  
   const img = document.createElement('img');
   img.src=pic[0];
 
@@ -353,7 +358,6 @@ const cartDraw = (product, index, x, totalPrice) => {
   numberOfItems.textContent= ` pcs. ${x}`;
   if (index == 0){
     productSize.textContent= 'Size : S'
-   
   } else if (index == 1) {
     productSize.textContent= 'Size : M';
   } else if (index == 2) {
