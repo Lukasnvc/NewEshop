@@ -405,7 +405,6 @@ const deletItem = (id) => {
 })
 }
 
-
 const draw = (data) => {
 
 	data.forEach(element => {

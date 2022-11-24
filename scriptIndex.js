@@ -426,10 +426,6 @@ const itemCount = (data) => {
   }
 }
 
-
-
-// LOGIN
-
 const loginNav = document.querySelector('#login');
 const logout = document.querySelector('#logout');
 const loginBox = document.querySelector('#loginBox');
