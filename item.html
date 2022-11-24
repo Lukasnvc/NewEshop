@@ -34,6 +34,8 @@
         <a href="#" id="hoodies"><li class="place">Hoodies</li></a>
         <a href="#" id="sweatshirts"><li class="place">Sweatshirts</li></a>
         <a href="#" id="hats"><li class="place">Hats</li></a>
+        <a href="#" id="login"><li class="place login"><i class="fa-regular fa-user"></i>Login</li></a>
+        <a href="#" id="logout"><li class="place logout"><i class="fa-solid fa-right-from-bracket"></i>LogOut</li></a>
       </ul>
       <div class="cart">
         <a href="#" id="liked"><i class="fa-solid fa-heart forCart"></i></a>
@@ -42,6 +44,37 @@
           <ol id="cartDropdownItem"></ol>
           <span id="cartTotal"></span>
         </div>
+      </div>
+      <div id="loginBox">
+        <i class="fa-regular fa-rectangle-xmark" id="closeLogin"></i>
+        <h2>Welcome back</h2>
+        <form>
+          <label for="username">Username :</label>
+          <input type="text" name="username" id="username">
+          <label for="password">Password :</label>
+          <input type="password" name="password" id="password">
+          <h2 id="error">Wrong password or no such user</h2>
+        </form>
+        <div class="loginButtons">
+          <button id="register">Register</button>
+          <button id="loginBtn">Login</button>
+        </div>
+      </div>
+      <div id="registerBox">
+        <i class="fa-regular fa-rectangle-xmark" id="closeRegister"></i>
+        <h2>Welcome new User, please register</h2>
+        <form>
+          <div><label for="username">Username :</label>
+            <input type="text" name="username" id="registerUsername"></div>
+          <div><label for="password">Password :</label>
+            <input type="password" name="password" id="registerPassword1"></div>
+          <div><label for="password2">Repeat Password :</label>
+            <input type="password" name="password2" id="registerPassword2"></div>
+          <div><label for="email">Email :</label>
+            <input type="email" name="email" id="email" required></div>
+        </form>
+        <h2 id="registerError">Passwords don't match</h2>
+        <button id="registerBtn">Register</button>
       </div>
     </nav>
   </header>

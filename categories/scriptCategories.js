@@ -24,6 +24,7 @@ const hats1 = document.querySelector('#hats1');
 const liked1 = document.querySelector('#liked1');
 const cart1 = document.querySelector('#cart1');
 
+
 mainIndex1.addEventListener('click', (e) => {
   e.preventDefault()
   localStorage.setItem('categorie', 'all');
@@ -100,6 +101,7 @@ const getData = () => {
 	filteredCategorie(data);
   cartCheck(data);
   itemCount(data);
+  stateCheck()
 })
 }
 
@@ -107,25 +109,41 @@ let likedArr = JSON.parse(localStorage.getItem('liked')) || [];
 
 getData()
 
+
+const stateCheck = () => {
+  const state = localStorage.getItem('state');
+  if (state == 'true') {
+    login.style.display = 'none';
+    logout.style.display = 'block';
+    liked.style.display = 'block';
+    liked1.style.display = 'block';
+  } else {
+    login.style.display = 'block';
+    logout.style.display = 'none';
+    liked.style.display = 'none';
+    liked1.style.display = 'none';
+  }
+}
+
 const filteredCategorie = (data) => {
   let value=localStorage.getItem('categorie');
+  let likedArr = JSON.parse(localStorage.getItem('likedArray')) || [];
   if(value=== 'like'){
-    let likeArr=[];
+    let likedItemsArr=[];
     data.forEach(element => {
       likedArr.forEach(like => {
         if(like===element.id) {
-          likeArr.push(element);
+          likedItemsArr.push(element);
         }
       })
     })
-    if (likeArr.length<1) {
+    if (likedItemsArr.length<1) {
       console.log('no like items')
       noLiked()
     } 
-    
-    draw(likeArr);
-    search(likeArr);
-    colorSearch(likeArr);
+    draw(likedItemsArr);
+    search(likedItemsArr);
+    colorSearch(likedItemsArr);
   } else {
   title.textContent = `Eshop ${value}s`;
   const fCategorie = data.filter((element) => {
@@ -163,7 +181,9 @@ const cartCheck = (data) => {
 
 
 const draw = (data) => {
-  const itemSizeArr = JSON.parse(localStorage.getItem('itemId&size')) || [];
+  const itemSizeArr = JSON.parse(localStorage.getItem
+    ('itemId&size')) || [];
+    let likedArr = JSON.parse(localStorage.getItem('likedArray')) || [];
   if (itemSizeArr.length>0){
   cart.style.color= '#F68E5F';
   } 
@@ -171,6 +191,8 @@ const draw = (data) => {
     const div = document.createElement('div');
     div.setAttribute('class', 'product');
 
+    const state = localStorage.getItem('state');
+  if (state == 'true') {
     const likedBtn = document.createElement('i');
     likedBtn.setAttribute('class', 'fa-regular fa-heart');
     if (likedArr.includes(element.id)) {
@@ -182,6 +204,24 @@ const draw = (data) => {
     } else {
       liked.style.color= 'black'
     }
+    div.appendChild(likedBtn)
+    div.appendChild(likedBtn)
+
+    likedBtn.addEventListener('click', (e) => {
+      e.preventDefault()
+      
+      if (likedArr.includes(element.id)) {
+        let i = likedArr.indexOf(element.id);
+        likedArr.splice(i,1);
+        addLike(jsonLiked);
+      } else {
+        likedArr.push(element.id);
+        let jsonLiked = JSON.stringify(likedArr);
+        addLike(jsonLiked);
+      }
+      getData()
+    })
+  }
 
     const pic = JSON.parse(element.picUrl);
     const img = document.createElement('img');
@@ -196,7 +236,7 @@ const draw = (data) => {
     price.setAttribute('class', 'productPrice');
     price.textContent= `${element.price}$`
 
-    div.appendChild(likedBtn)
+    
     div.appendChild(img);
     div.appendChild(name);
     div.appendChild(price);
@@ -209,21 +249,7 @@ const draw = (data) => {
       window.location.href = 'item.html';
     })
 
-    likedBtn.addEventListener('click', (e) => {
-      e.preventDefault()
-      
-      if (likedArr.includes(element.id)) {
-        let i = likedArr.indexOf(element.id);
-        likedArr.splice(i,1);
-        let jsonLiked = JSON.stringify(likedArr);
-        localStorage.setItem('liked', jsonLiked);
-      } else {
-        likedArr.push(element.id);
-        let jsonLiked = JSON.stringify(likedArr);
-        localStorage.setItem('liked', jsonLiked);
-      }
-      getData()
-    })
+  
   });
 }
 
@@ -385,4 +411,178 @@ const cartPeaklook = () => {
   cart.addEventListener('mouseout', () => {
       dropdownCart.style.display = 'none';
   })
+}
+
+
+
+const loginNav = document.querySelector('#login');
+const logout = document.querySelector('#logout');
+const loginBox = document.querySelector('#loginBox');
+const closeLogin = document.querySelector('#closeLogin');
+const usernameLogin = document.querySelector('#username');
+const passwordLogin = document.querySelector('#password');
+const errorLogin = document.querySelector('#error');
+const loginBtn = document.querySelector('#loginBtn');
+const registerLogin = document.querySelector('#register');
+const registerBox = document.querySelector('#registerBox');
+const closeRegister = document.querySelector('#closeRegister');
+const registerUsername = document.querySelector('#registerUsername');
+const registerPassword1 = document.querySelector('#registerPassword1');
+const registerPassword2 = document.querySelector('#registerPassword2');
+const registerError = document.querySelector('#registerError');
+const registerBtn = document.querySelector('#registerBtn');
+const email = document.querySelector('#email');
+
+
+
+
+const importNewUser = (username, password, likes, email) => {
+	fetch(`https://testapi.io/api/lukasnvc/resource/usersEshop`,
+	{
+		method: 'POST',
+		headers: {
+			'Content-Type':
+			'application/json'
+		},
+		body: JSON.stringify({
+			username: `${username}`,
+      password: `${password}`,
+      liked: `${likes}`,
+      email: `${email}`
+		}) 
+	})
+	.then((response) => {
+		if (response.ok) {
+      getUserData()
+		}
+	})
+}
+
+const getUserData = () => {
+  fetch('	https://testapi.io/api/lukasnvc/resource/usersEshop',
+{
+  method: 'GET',
+  headers: {
+    'Content-Type':
+    'application/json'
+  }
+})
+.then((response) => {
+  if (response.ok) {
+    return response.json()
+  }
+})
+.then((result) => {
+	return result.data
+})
+.then((data) => {
+  checkUser(data)
+  getData()
+})
+}
+getUserData()
+
+
+
+const userLikes = (id, username, password, likes, email) => {
+	fetch(`https://testapi.io/api/lukasnvc/resource/usersEshop/${id}`,
+	{
+		method: 'PUT',
+		headers: {
+			'Content-Type':
+			'application/json'
+		},
+		body: JSON.stringify({
+      username: `${username}`,
+      password: `${password}`,
+      liked: `${likes}`,
+      email: `${email}`
+		}) 
+	})
+	.then((response) => {
+		if (response.ok) {
+			return response.json()
+		}
+	})
+	.then((result) => {
+    getUserData()
+		console.log('Fetching data : ', result);
+	})
+}
+
+
+
+
+
+loginNav.addEventListener('click', () => {
+  loginBox.style.display = 'flex';
+})
+
+closeLogin.addEventListener('click', () => {
+  loginBox.style.display = 'none';
+})
+
+registerLogin.addEventListener('click', () => {
+  loginBox.style.display = 'none';
+  registerBox.style.display = 'flex';
+})
+
+closeRegister.addEventListener('click', () => {
+  registerBox.style.display = 'none';
+})
+
+logout.addEventListener('click', () => {
+  login.style.display = 'block';
+  logout.style.display = 'none';
+  localStorage.setItem('user', '');
+  localStorage.setItem('state', 'false');
+  localStorage.clear()
+  getData()
+  window.location.href = 'index.html';
+})
+
+registerBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (registerPassword1.value===registerPassword2.value){
+    const likes = JSON.stringify([]);
+  importNewUser(registerUsername.value, registerPassword1.value, likes, email.value);
+  registerBox.style.display = 'none';
+  loginBox.style.display = 'flex';
+  usernameLogin.value = registerUsername.value;
+  } else {
+    registerError.style.display = 'block';
+  }
+})
+
+const checkUser = (data) => {
+  loginBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    data.forEach(user => {
+      if (user.username==username.value && user.password==password.value) {
+        loginBox.style.display = 'none';
+        localStorage.setItem('user', user.id);
+        localStorage.setItem('username', user.username);
+        localStorage.setItem('password', user.password);
+        localStorage.setItem('email', user.email);
+        localStorage.setItem('likedArray', user.liked);
+        localStorage.setItem('state', 'true');
+        login.style.display = 'none';
+        logout.style.display = 'block';
+        getData()
+      } else {
+        errorLogin.style.display = 'block';
+      }
+    })
+  })
+}
+
+const addLike = (like) => {
+  const id = localStorage.getItem('user');
+  const username = localStorage.getItem('username');
+  const password = localStorage.getItem('password');
+  const email = localStorage.getItem('email');
+  localStorage.setItem('likedArray', like);
+  userLikes(id,username,password,like,email);
+
 }
