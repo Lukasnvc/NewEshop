@@ -34,6 +34,98 @@ const sliderPic = document.querySelector('#sliderPic');
 const allSliderPics = document.querySelector('#allSliderPics');
 const addToSliderBtn = document.querySelector('#addToSliderBtn');
 const showAddSlideBtn = document.querySelector('#showAddSlideBtn');
+const userListBtn = document.querySelector('#userList');
+const userListContainer = document.querySelector('#userListContainer');
+const closeUserList = document.querySelector('#closeUserList');
+const itemsUsers = document.querySelector('#itemsUsers');
+
+userListBtn.addEventListener('click', () => {
+	userListContainer.style.display = 'block';
+	getUserData()
+})
+
+closeUserList.addEventListener('click', () => {
+	userListContainer.style.display = 'none';
+})
+
+
+const drawUsers = (data) => {
+	data.forEach(user => {
+		const deleteUser = document.createElement('button');
+		deleteUser.textContent = 'Delete User';
+		deleteUser.setAttribute('class', 'deleteUsser');
+
+		const userName = document.createElement('span');
+		userName.textContent = `User name: ${user.username}`;
+
+		const userPassword = document.createElement('span');
+		userPassword.textContent = `User password: ${user.password}`;
+
+		const userMail = document.createElement('span');
+		userMail.textContent = `User email: ${user.email}`;
+
+		const userRegistered = document.createElement('span');
+		userRegistered.textContent = `User registered: ${user.createdAt}`;
+
+		const userLastLog = document.createElement('span');
+		userLastLog.textContent = `User last updated: ${user.updatedAt}`;
+
+		const infoDiv = document.createElement('div');
+		infoDiv.setAttribute('class', 'infoDiv');
+		infoDiv.appendChild(deleteUser);
+		infoDiv.appendChild(userName);
+		infoDiv.appendChild(userPassword);
+		infoDiv.appendChild(userMail);
+		infoDiv.appendChild(userRegistered);
+		infoDiv.appendChild(userLastLog);
+
+		itemsUsers.appendChild(infoDiv)
+
+		deleteUser.addEventListener('click', () => {
+			removeUser(user.id)
+		})
+	})
+}
+
+const removeUser = (id) => {
+	fetch(`https://testapi.io/api/lukasnvc/resource/usersEshop/${id}`,
+	{
+		method: 'DELETE',
+		headers: {
+			'Content-Type':
+			'application/json'
+		}
+	})
+	.then((response) => {
+		if (response.ok) {
+			getUserData();
+		}
+	})
+}
+
+const getUserData = () => {
+  fetch('	https://testapi.io/api/lukasnvc/resource/usersEshop',
+{
+  method: 'GET',
+  headers: {
+    'Content-Type':
+    'application/json'
+  }
+})
+.then((response) => {
+  if (response.ok) {
+    return response.json()
+  }
+})
+.then((result) => {
+	return result.data
+})
+.then((data) => {
+	itemsUsers.innerHTML='';
+  drawUsers(data)
+})
+}
+
 
 showAddSlideBtn.addEventListener('click', () => {
 	addSlidePics.style.display= 'block';
@@ -137,26 +229,6 @@ const drawSlider = (data) => {
 
 getSliderData()
 
-// fetch('	https://testapi.io/api/lukasnvc/resource/adminLogin',
-// 	{
-// 		method: 'GET',
-// 		headers: {
-// 			'Content-Type':
-// 			'application/json'
-// 		}
-// 	})
-// 	.then((response) => {
-// 		if (response.ok) {
-// 			return response.json()
-// 		}
-// 	})
-// 	.then((result) => {
-// 		return result.data
-// 	})
-// 	.then((data) => {
-// 		loginCheck(data)
-// })
-
 	login.addEventListener('click', (e) => {
 		e.preventDefault();
 			if (adminName.value==='Lukas' && password.value==='123' || adminName.value==='Gytis' && password.value==='123' ) {
@@ -164,6 +236,7 @@ getSliderData()
 				mainBtns.style.display= 'block';
 				forAdmin.style.display= "block";
 				searchesFields.style.display= 'flex';
+				localStorage.clear();
 			} else {
 				error.style.display= 'block';
 			}
@@ -354,7 +427,7 @@ const draw = (data) => {
 		inputName.setAttribute('class', 'drawnName');
 		inputName.value= element.name;
 
-		const inputDescription = document.createElement('input');
+		const inputDescription = document.createElement('textarea');
 		inputDescription.setAttribute('class', 'drawnDescription');
 		inputDescription.value = element.description;
 

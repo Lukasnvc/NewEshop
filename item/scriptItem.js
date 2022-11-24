@@ -101,6 +101,16 @@ login1.addEventListener('click', () => {
   loginBox.style.display = 'flex';
 })
 
+logout1.addEventListener('click', () => {
+  login.style.display = 'block';
+  logout.style.display = 'none';
+  localStorage.setItem('user', '');
+  localStorage.setItem('state', 'false');
+  localStorage.clear()
+  getData()
+  window.location.href = 'index.html';
+})
+
 
 const id=localStorage.getItem('item_id');
 

@@ -11,8 +11,8 @@ body {
       border-radius: 20%;
       position: fixed;
       z-index: 99;
-      top: 20px;
-      right: 20px;
+      top: 25px;
+      right: 25px;
       font-size: 2rem;
 
       @media screen and (max-width: 815px) {
@@ -105,6 +105,12 @@ body {
           border-bottom: 2px solid #F68E5F;
           background-color: #F5DD90;
           margin-right: 10px;
+
+          @media screen and (max-width: 500px) {
+            display: flex;
+            flex-direction: column;
+            width: 80vw;
+          }
         }
 
         #error {
@@ -182,6 +188,12 @@ body {
         margin: 5px;
         display: flex;
         flex-direction: column;
+
+        @media screen and (max-width: 500px) {
+          display: flex;
+          flex-direction: column;
+          width: 80vw;
+        }
 
         input {
           width: fit-content;

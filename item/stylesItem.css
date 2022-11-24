@@ -10,8 +10,8 @@ body header #mobileNav {
   border-radius: 20%;
   position: fixed;
   z-index: 99;
-  top: 20px;
-  right: 20px;
+  top: 25px;
+  right: 25px;
   font-size: 2rem;
 }
 @media screen and (max-width: 815px) {
@@ -92,6 +92,13 @@ body header #loginBox h2 {
 body header #loginBox form {
   margin: 5px;
 }
+@media screen and (max-width: 500px) {
+  body header #loginBox form {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+  }
+}
 body header #loginBox form input {
   width: 80px;
   border: none;
@@ -163,6 +170,13 @@ body header #registerBox form {
   margin: 5px;
   display: flex;
   flex-direction: column;
+}
+@media screen and (max-width: 500px) {
+  body header #registerBox form {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+  }
 }
 body header #registerBox form input {
   width: -webkit-fit-content;

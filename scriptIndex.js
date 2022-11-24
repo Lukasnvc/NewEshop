@@ -421,10 +421,8 @@ const itemCount = (data) => {
   if (sumPcs>0) {
     cartPcs.textContent = sumPcs; 
     cartPcs.style.display='block';
-    console.log('Loged in')
   } else {
     cartPcs.style.display='none';
-    console.log('not Logedin')
   }
 }
 
