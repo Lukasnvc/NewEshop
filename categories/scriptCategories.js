@@ -24,6 +24,9 @@ const hats1 = document.querySelector('#hats1');
 const liked1 = document.querySelector('#liked1');
 const cart1 = document.querySelector('#cart1');
 
+const login1 = document.querySelector('#login1');
+const logout1 = document.querySelector('#logout1');
+
 
 mainIndex1.addEventListener('click', (e) => {
   e.preventDefault()
@@ -76,6 +79,21 @@ closeBtn.addEventListener('click', () => {
   mobileList.style.top='-500px'
 })
 
+login1.addEventListener('click', () => {
+  mobileList.style.right='-180px';
+  mobileList.style.top='-500px';
+  loginBox.style.display = 'flex';
+})
+
+logout1.addEventListener('click', () => {
+  login.style.display = 'block';
+  logout.style.display = 'none';
+  localStorage.setItem('user', '');
+  localStorage.setItem('state', 'false');
+  localStorage.clear()
+  getData()
+  window.location.href = 'index.html';
+})
 
 
 const getData = () => {
@@ -114,12 +132,16 @@ const stateCheck = () => {
   const state = localStorage.getItem('state');
   if (state == 'true') {
     login.style.display = 'none';
+    login1.style.display = 'none';
     logout.style.display = 'block';
+    logout1.style.display = 'block';
     liked.style.display = 'block';
     liked1.style.display = 'block';
   } else {
     login.style.display = 'block';
+    login1.style.display = 'block';
     logout.style.display = 'none';
+    logout1.style.display = 'none';
     liked.style.display = 'none';
     liked1.style.display = 'none';
   }
@@ -568,7 +590,9 @@ const checkUser = (data) => {
         localStorage.setItem('likedArray', user.liked);
         localStorage.setItem('state', 'true');
         login.style.display = 'none';
+        login1.style.display = 'none';
         logout.style.display = 'block';
+        logout1.style.display = 'block';
         getData()
       } else {
         errorLogin.style.display = 'block';

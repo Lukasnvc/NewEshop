@@ -41,6 +41,9 @@ const hats1 = document.querySelector('#hats1');
 const liked1 = document.querySelector('#liked1');
 const cart1 = document.querySelector('#cart1');
 
+const login1 = document.querySelector('#login1');
+const logout1 = document.querySelector('#logout1');
+
 mainIndex1.addEventListener('click', (e) => {
   e.preventDefault()
   localStorage.setItem('categorie', 'all');
@@ -90,6 +93,12 @@ mobileNav.addEventListener('click', () => {
 closeBtn.addEventListener('click', () => {
   mobileList.style.right='-180px';
   mobileList.style.top='-500px'
+})
+
+login1.addEventListener('click', () => {
+  mobileList.style.right='-180px';
+  mobileList.style.top='-500px';
+  loginBox.style.display = 'flex';
 })
 
 
@@ -168,13 +177,17 @@ const stateCheck = () => {
   const state = localStorage.getItem('state');
   if (state == 'true') {
     login.style.display = 'none';
+    login1.style.display = 'none';
     logout.style.display = 'block';
+    logout1.style.display = 'block';
     liked.style.display = 'block';
     liked1.style.display = 'block';
     likeBtn.style.display = 'block';
   } else {
     login.style.display = 'block';
+    login1.style.display = 'block';
     logout.style.display = 'none';
+    logout1.style.display = 'none';
     liked.style.display = 'none';
     liked1.style.display = 'none';
     likeBtn.style.display = 'none';
@@ -579,7 +592,9 @@ const checkUser = (data) => {
         localStorage.setItem('likedArray', user.liked);
         localStorage.setItem('state', 'true');
         login.style.display = 'none';
+        login1.style.display = 'none';
         logout.style.display = 'block';
+        logout1.style.display = 'block';
         getData()
       } else {
         errorLogin.style.display = 'block';
@@ -594,7 +609,6 @@ const addLike = (like) => {
   const password = localStorage.getItem('password');
   const email = localStorage.getItem('email');
   localStorage.setItem('likedArray', like);
-  const jsonLike = JSON.stringify(like)
-  userLikes(id,username,password,jsonLike,email);
+  userLikes(id,username,password,like,email);
 
 }

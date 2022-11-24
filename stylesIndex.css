@@ -53,6 +53,9 @@ body header #mobileList .place:last-of-type:hover {
   cursor: pointer;
   color: #F5DD90;
 }
+body header #mobileList #logout1 {
+  display: none;
+}
 body header #mobileList #closeBtn {
   padding: 15px;
   font-size: 2.5rem;
@@ -60,6 +63,142 @@ body header #mobileList #closeBtn {
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
+}
+body header #loginBox {
+  top: 20px;
+  right: 20px;
+  position: absolute;
+  z-index: 100;
+  background-color: #F5DD90;
+  border: 2px solid #F68E5F;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  display: none;
+}
+body header #loginBox i {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+}
+body header #loginBox i:hover {
+  cursor: pointer;
+}
+body header #loginBox h2 {
+  text-align: center;
+}
+body header #loginBox form {
+  margin: 5px;
+}
+body header #loginBox form input {
+  width: 80px;
+  border: none;
+  border-bottom: 2px solid #F68E5F;
+  background-color: #F5DD90;
+  margin-right: 10px;
+}
+body header #loginBox form #error {
+  display: none;
+  color: #F76C5E;
+}
+body header #loginBox .loginButtons {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px 0;
+}
+body header #loginBox .loginButtons #loginBtn {
+  background-color: #324376;
+  padding: 4px 12px;
+  border: 2px solid #324376;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+body header #loginBox .loginButtons #loginBtn:hover {
+  cursor: pointer;
+  color: #F5DD90;
+  border: 2px solid whitesmoke;
+}
+body header #loginBox .loginButtons #register {
+  background-color: #F68E5F;
+  padding: 4px 12px;
+  border: 2px solid #F68E5F;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+body header #loginBox .loginButtons #register:hover {
+  cursor: pointer;
+  color: #F5DD90;
+  border: 2px solid whitesmoke;
+}
+body header #registerBox {
+  top: 20px;
+  right: 20px;
+  position: absolute;
+  z-index: 101;
+  background-color: #F5DD90;
+  border: 2px solid #F68E5F;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  display: none;
+}
+body header #registerBox i {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+}
+body header #registerBox i:hover {
+  cursor: pointer;
+}
+body header #registerBox h2 {
+  margin-top: 40px;
+  text-align: center;
+  padding: 5px;
+}
+body header #registerBox form {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+body header #registerBox form input {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: none;
+  border-bottom: 2px solid #F68E5F;
+  background-color: #F5DD90;
+  margin-left: 60px;
+}
+body header #registerBox form #registerPassword2 {
+  margin-left: 12px;
+}
+body header #registerBox form #email {
+  margin-left: 87px;
+}
+body header #registerBox #registerError {
+  display: none;
+  color: #F76C5E;
+}
+body header #registerBox #registerBtn {
+  font-size: 1rem;
+  margin: 10px auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #F68E5F;
+  padding: 5px 15px;
+  border: 2px solid #F68E5F;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+body header #registerBox #registerBtn:hover {
+  cursor: pointer;
+  color: #F5DD90;
+  border: 2px solid whitesmoke;
 }
 body header nav {
   position: fixed;
@@ -189,142 +328,6 @@ body header nav .cart #cartsDp #cartTotal {
   font-weight: bold;
   right: 100px;
   bottom: 15px;
-}
-body header nav #loginBox {
-  top: 20px;
-  right: 20px;
-  position: absolute;
-  z-index: 5;
-  background-color: #F5DD90;
-  border: 2px solid #F68E5F;
-  border-radius: 20px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  display: none;
-}
-body header nav #loginBox i {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 1.5rem;
-}
-body header nav #loginBox i:hover {
-  cursor: pointer;
-}
-body header nav #loginBox h2 {
-  text-align: center;
-}
-body header nav #loginBox form {
-  margin: 5px;
-}
-body header nav #loginBox form input {
-  width: 80px;
-  border: none;
-  border-bottom: 2px solid #F68E5F;
-  background-color: #F5DD90;
-  margin-right: 10px;
-}
-body header nav #loginBox form #error {
-  display: none;
-  color: #F76C5E;
-}
-body header nav #loginBox .loginButtons {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 10px 0;
-}
-body header nav #loginBox .loginButtons #loginBtn {
-  background-color: #324376;
-  padding: 4px 12px;
-  border: 2px solid #324376;
-  border-radius: 5px;
-  color: whitesmoke;
-}
-body header nav #loginBox .loginButtons #loginBtn:hover {
-  cursor: pointer;
-  color: #F5DD90;
-  border: 2px solid whitesmoke;
-}
-body header nav #loginBox .loginButtons #register {
-  background-color: #F68E5F;
-  padding: 4px 12px;
-  border: 2px solid #F68E5F;
-  border-radius: 5px;
-  color: whitesmoke;
-}
-body header nav #loginBox .loginButtons #register:hover {
-  cursor: pointer;
-  color: #F5DD90;
-  border: 2px solid whitesmoke;
-}
-body header nav #registerBox {
-  top: 20px;
-  right: 20px;
-  position: absolute;
-  z-index: 6;
-  background-color: #F5DD90;
-  border: 2px solid #F68E5F;
-  border-radius: 20px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  display: none;
-}
-body header nav #registerBox i {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 1.5rem;
-}
-body header nav #registerBox i:hover {
-  cursor: pointer;
-}
-body header nav #registerBox h2 {
-  margin-top: 40px;
-  text-align: center;
-  padding: 5px;
-}
-body header nav #registerBox form {
-  margin: 5px;
-  display: flex;
-  flex-direction: column;
-}
-body header nav #registerBox form input {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border: none;
-  border-bottom: 2px solid #F68E5F;
-  background-color: #F5DD90;
-  margin-left: 60px;
-}
-body header nav #registerBox form #registerPassword2 {
-  margin-left: 12px;
-}
-body header nav #registerBox form #email {
-  margin-left: 87px;
-}
-body header nav #registerBox #registerError {
-  display: none;
-  color: #F76C5E;
-}
-body header nav #registerBox #registerBtn {
-  font-size: 1rem;
-  margin: 10px auto;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  background-color: #F68E5F;
-  padding: 5px 15px;
-  border: 2px solid #F68E5F;
-  border-radius: 5px;
-  color: whitesmoke;
-}
-body header nav #registerBox #registerBtn:hover {
-  cursor: pointer;
-  color: #F5DD90;
-  border: 2px solid whitesmoke;
 }
 body main form {
   display: flex;

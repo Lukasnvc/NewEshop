@@ -63,7 +63,167 @@ body {
         width: fit-content;
         margin: 0 auto;
       }
+
+      #logout1 {
+        display: none;
+      }
     }
+
+    #loginBox {
+      top: 20px;
+      right: 20px;
+      position: absolute;
+      z-index: 100;
+      background-color: #F5DD90;
+      border: 2px solid #F68E5F;
+      border-radius: 20px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      display: none;
+
+      i {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      form {
+        margin: 5px;
+        input {
+          width: 80px;
+          border: none;
+          border-bottom: 2px solid #F68E5F;
+          background-color: #F5DD90;
+          margin-right: 10px;
+        }
+
+        #error {
+          display: none;
+          color: #F76C5E;
+        }
+      }
+
+      .loginButtons {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 10px 0;
+
+        #loginBtn {
+          background-color: #324376;
+          padding: 4px 12px;
+          border: 2px solid #324376;
+          border-radius: 5px;
+          color: whitesmoke;
+
+          &:hover {
+            cursor: pointer;
+            color: #F5DD90;
+            border: 2px solid whitesmoke;
+          }
+        }
+
+        #register {
+          background-color: #F68E5F;
+          padding: 4px 12px;
+          border: 2px solid #F68E5F;
+          border-radius: 5px;
+          color: whitesmoke;
+
+          &:hover {
+            cursor: pointer;
+            color: #F5DD90;
+            border: 2px solid whitesmoke;
+          }
+        }
+      }
+    }
+
+    #registerBox {
+      top: 20px;
+      right: 20px;
+      position: absolute;
+      z-index: 101;
+      background-color: #F5DD90;
+      border: 2px solid #F68E5F;
+      border-radius: 20px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      display: none;
+
+      i { 
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      
+      h2 {
+        margin-top: 40px;
+        text-align: center;
+        padding: 5px;
+      }
+
+      form {
+        margin: 5px;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          width: fit-content;
+          border: none;
+          border-bottom: 2px solid #F68E5F;
+          background-color: #F5DD90;
+          margin-left: 60px;
+        }
+
+        #registerPassword2 {
+          margin-left: 12px;
+        }
+
+        #email {
+          margin-left: 87px;
+        }
+      }
+
+      #registerError {
+        display: none;
+        color: #F76C5E;
+      }
+
+      #registerBtn {
+        font-size: 1rem;
+        margin: 10px auto;
+        width: fit-content;
+        background-color: #F68E5F;
+        padding: 5px 15px;
+        border: 2px solid #F68E5F;
+        border-radius: 5px;
+        color: whitesmoke;
+
+        &:hover {
+          cursor: pointer;
+          color: #F5DD90;
+          border: 2px solid whitesmoke;
+        }
+      } 
+    }
+
+
     nav {
       position: fixed;
       top: 0;
@@ -207,160 +367,6 @@ body {
           bottom: 15px;
           }
         }
-      }
-
-      #loginBox {
-        top: 20px;
-        right: 20px;
-        position: absolute;
-        z-index: 5;
-        background-color: #F5DD90;
-        border: 2px solid #F68E5F;
-        border-radius: 20px;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        display: none;
-
-        i {
-          position: absolute;
-          top: 15px;
-          right: 15px;
-          font-size: 1.5rem;
-
-          &:hover {
-            cursor: pointer;
-          }
-        }
-
-        h2 {
-          text-align: center;
-        }
-
-        form {
-          margin: 5px;
-          input {
-            width: 80px;
-            border: none;
-            border-bottom: 2px solid #F68E5F;
-            background-color: #F5DD90;
-            margin-right: 10px;
-          }
-
-          #error {
-            display: none;
-            color: #F76C5E;
-          }
-        }
-
-        .loginButtons {
-          display: flex;
-          justify-content: space-evenly;
-          margin: 10px 0;
-
-          #loginBtn {
-            background-color: #324376;
-            padding: 4px 12px;
-            border: 2px solid #324376;
-            border-radius: 5px;
-            color: whitesmoke;
-
-            &:hover {
-              cursor: pointer;
-              color: #F5DD90;
-              border: 2px solid whitesmoke;
-            }
-          }
-
-          #register {
-            background-color: #F68E5F;
-            padding: 4px 12px;
-            border: 2px solid #F68E5F;
-            border-radius: 5px;
-            color: whitesmoke;
-
-            &:hover {
-              cursor: pointer;
-              color: #F5DD90;
-              border: 2px solid whitesmoke;
-            }
-          }
-        }
-      }
-
-      #registerBox {
-        top: 20px;
-        right: 20px;
-        position: absolute;
-        z-index: 6;
-        background-color: #F5DD90;
-        border: 2px solid #F68E5F;
-        border-radius: 20px;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        display: none;
-
-        i { 
-          position: absolute;
-          top: 15px;
-          right: 15px;
-          font-size: 1.5rem;
-
-          &:hover {
-            cursor: pointer;
-          }
-        }
-        
-        h2 {
-          margin-top: 40px;
-          text-align: center;
-          padding: 5px;
-        }
-
-        form {
-          margin: 5px;
-          display: flex;
-          flex-direction: column;
-
-          input {
-            width: fit-content;
-            border: none;
-            border-bottom: 2px solid #F68E5F;
-            background-color: #F5DD90;
-            margin-left: 60px;
-          }
-
-          #registerPassword2 {
-            margin-left: 12px;
-          }
-
-          #email {
-            margin-left: 87px;
-          }
-        }
-
-        #registerError {
-          display: none;
-          color: #F76C5E;
-        }
-
-        #registerBtn {
-          font-size: 1rem;
-          margin: 10px auto;
-          width: fit-content;
-          background-color: #F68E5F;
-          padding: 5px 15px;
-          border: 2px solid #F68E5F;
-          border-radius: 5px;
-          color: whitesmoke;
-
-          &:hover {
-            cursor: pointer;
-            color: #F5DD90;
-            border: 2px solid whitesmoke;
-          }
-        } 
       }
     }
   }
