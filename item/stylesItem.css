@@ -61,6 +61,22 @@ body header #mobileList #closeBtn {
   width: fit-content;
   margin: 0 auto;
 }
+body header #mobileList #cart1 {
+  position: relative;
+}
+body header #mobileList #cart1 #cartPcs1 {
+  position: absolute;
+  font-family: "Roboto Condensed", sans-serif;
+  top: -7px;
+  left: 33%;
+  font-size: 0.8rem;
+  border: 2px solid whitesmoke;
+  padding: 2px 5px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  color: whitesmoke;
+}
 body header #mobileList #logout1 {
   display: none;
 }

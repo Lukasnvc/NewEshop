@@ -14,6 +14,9 @@ const totalPcsH2 = document.querySelector('#totalPcs');
 const mobileNav = document.querySelector('#mobileNav');
 const mobileList = document.querySelector('#mobileList');
 const closeBtn = document.querySelector('#closeBtn');
+const card = document.querySelector('#card');
+const cardClose = document.querySelector('#cardClose');
+const purchase = document.querySelector('#purchase');
 
 const mainIndex1 = document.querySelector('#mainIndex1');
 const tshirts1 = document.querySelector('#tshirts1');
@@ -23,6 +26,7 @@ const hats1 = document.querySelector('#hats1');
 const liked1 = document.querySelector('#liked1');
 const cart1 = document.querySelector('#cart1');
 const cartPcs = document.querySelector('#cartPcs');
+const cartPcs1 = document.querySelector('#cartPcs1')
 
 const login1 = document.querySelector('#login1');
 const logout1 = document.querySelector('#logout1');
@@ -181,8 +185,9 @@ const filtring = (data) => {
   let totalPrice = [];
   let totalPcs = [];
   if (totalPrice.length<1) {
-    cartPcs.style.display= 'none';
-    totalPcsH2.innerHTML='';
+    cartPcs.style.display = 'none';
+    cartPcs1.style.display = 'none';
+    totalPcsH2.innerHTML = '';
     cartTotal.innerHTML = 'No items in cart';
     buy.style.display= 'none';
     deleteAll.style.display= 'none';
@@ -293,8 +298,10 @@ const draw = (product, index, x, totalPrice, totalPcs) => {
   cartTotal.textContent= `Total ${sum}$`;
   sumPcs= totalPcs.reduce((a,b) => a + b, 0);
   totalPcsH2.textContent= `${sumPcs} pcs.`
-  cartPcs.textContent = sumPcs; 
+  cartPcs.textContent = sumPcs;
+  cartPcs1.textContent = sumPcs; 
   cartPcs.style.display = 'block';
+  cartPcs1.style.display = 'block';
   buy.style.display = 'block';
   deleteAll.style.display = 'block';
   buyDeleteReserve(product, index);
@@ -324,9 +331,18 @@ const removeFromCart = (data, index) => {
   }
 }
 
+buy.addEventListener('click', () => {
+  card.style.display = 'block';
+})
+
+cardClose.addEventListener('click', () => {
+  card.style.display = 'none';
+})
+
 const buyDeleteReserve = (data, index) => {
-  buy.addEventListener('click', (e) => {
+  purchase.addEventListener('click', (e) => {
     e.preventDefault();
+    card.style.display = 'none';
     let parsedSize = JSON.parse(data.size);
     let parsedReserve = JSON.parse(data.reserve);
     parsedReserve[index] = 0;
@@ -512,10 +528,6 @@ const userLikes = (id, username, password, likes, email) => {
 		console.log('Fetching data : ', result);
 	})
 }
-
-
-
-
 
 loginNav.addEventListener('click', () => {
   loginBox.style.display = 'flex';

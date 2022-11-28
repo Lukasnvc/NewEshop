@@ -20,7 +20,8 @@ const sweatshirts1 = document.querySelector('#sweatshirts1');
 const hats1 = document.querySelector('#hats1');
 const liked1 = document.querySelector('#liked1');
 const cart1 = document.querySelector('#cart1');
-const cartPcs = document.querySelector('#cartPcs')
+const cartPcs = document.querySelector('#cartPcs');
+const cartPcs1 = document.querySelector('#cartPcs1');
 
 const dropdownCart = document.querySelector('#cartsDp');
 const cartDropdownItem = document.querySelector('#cartDropdownItem');
@@ -420,9 +421,12 @@ const itemCount = (data) => {
   sumPcs= countArr.reduce((a,b) => a + b, 0);
   if (sumPcs>0) {
     cartPcs.textContent = sumPcs; 
+    cartPcs1.textContent = sumPcs; 
     cartPcs.style.display='block';
+    cartPcs1.style.display='block';
   } else {
     cartPcs.style.display='none';
+    cartPcs1.style.display='none';
   }
 }
 

@@ -26,7 +26,7 @@
       <li id="logout1" class="place"><i class="fa-solid fa-right-from-bracket"></i>LogOut</li>
       <li id="liked1" class="place"><i class="fa-solid fa-heart forCart"></i></li>
       <li id="cart1" class="place">
-      <i class="fa-solid fa-cart-shopping forCart"></i></li>
+      <i class="fa-solid fa-cart-shopping forCart"><span id="cartPcs1"></span></i></li>
     </ul>
 
     <div id="loginBox">
@@ -89,6 +89,32 @@
         <h2 id="cartTotal"></h2>
         <button id="buy">Buy</button>
         <button id="deleteAll">Delete all items from cart</button>
+      </div>
+      <div id="card">
+        <i id="cardClose" class="fa-regular fa-circle-xmark"></i>
+        <form>
+          <div class="bigBox">
+            <label for="name">Cardholder name</label>
+          <input type="text" name="name" id="cardName">
+          <label for="cardNumber">Card number</label>
+          <input type="number" name="cardNumber" id="cardNumber" placeholder="1234 1234 1234 1234">
+          </div>
+          <div class="bottom">
+            <div>
+              <label for="expire">Expire date</label>
+              <input type="number" name="expire" id="expire" placeholder="MM/YY">
+              <label for="postal">Postal code</label>
+              <input type="number" name="postal" id="postal">
+            </div>
+            <div>
+              <label for="cvc">Security code</label>
+              <input type="number" name="cvc" id="cvc" placeholder="CVC">
+              <label for="country">Country</label>
+              <input type="text" name="country" id="country">
+            </div>
+          </div>
+          <button id="purchase">Purchase</button>
+        </form>
       </div>
   </main>
 

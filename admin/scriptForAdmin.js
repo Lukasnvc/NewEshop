@@ -69,6 +69,11 @@ const drawUsers = (data) => {
 
 		const userLastLog = document.createElement('span');
 		userLastLog.textContent = `User last updated: ${user.updatedAt}`;
+		
+
+		const parsedLiked = JSON.parse(user.liked)
+		const userLikes = document.createElement('span');
+		userLikes.textContent = `Liked products ID: ${parsedLiked}`;
 
 		const infoDiv = document.createElement('div');
 		infoDiv.setAttribute('class', 'infoDiv');
@@ -78,6 +83,7 @@ const drawUsers = (data) => {
 		infoDiv.appendChild(userMail);
 		infoDiv.appendChild(userRegistered);
 		infoDiv.appendChild(userLastLog);
+		infoDiv.appendChild(userLikes);
 
 		itemsUsers.appendChild(infoDiv)
 
@@ -125,7 +131,6 @@ const getUserData = () => {
   drawUsers(data)
 })
 }
-
 
 showAddSlideBtn.addEventListener('click', () => {
 	addSlidePics.style.display= 'block';
@@ -434,6 +439,9 @@ const draw = (data) => {
 		inputPrice.setAttribute('class', 'drawnPrice');
 		inputPrice.value = element.price;
 
+		const itemId = document.createElement('span');
+		itemId.textContent = `ID ${element.id}`;
+
 		const edit = document.createElement('button');
 		edit.setAttribute('class', 'editBtn');
 		edit.textContent= 'Update info';
@@ -447,6 +455,7 @@ const draw = (data) => {
 		deleteBtn.textContent= 'Delete item';
 
 		div.appendChild(edit);
+		div.appendChild(itemId);
 		div.appendChild(addPic);
 		div.appendChild(deleteBtn);
 		div.appendChild(inputPic);

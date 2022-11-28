@@ -61,6 +61,24 @@ body {
         display: none;
       }
 
+      #cart1 {
+        position: relative;
+
+        #cartPcs1 {
+          position: absolute;
+          font-family: 'Roboto Condensed', sans-serif;
+          top: -7px;
+          left: 33%;
+          font-size: 0.8rem;
+          border: 2px solid whitesmoke;
+          padding: 2px 5px;
+          border-top-left-radius: 50%;
+          border-top-right-radius: 50%;
+          border-bottom-right-radius: 50%;
+          color: whitesmoke;
+        }
+      }
+
       #closeBtn {
         padding: 15px;
         font-size: 2.5rem;

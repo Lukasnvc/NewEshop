@@ -15,6 +15,8 @@ const cartTotal = document.querySelector('#cartTotal');
 const mobileNav = document.querySelector('#mobileNav');
 const mobileList = document.querySelector('#mobileList');
 const closeBtn = document.querySelector('#closeBtn');
+const cartPcs = document.querySelector('#cartPcs');
+const cartPcs1 = document.querySelector('#cartPcs1');
 
 const mainIndex1 = document.querySelector('#mainIndex1');
 const tshirts1 = document.querySelector('#tshirts1');
@@ -377,8 +379,11 @@ const itemCount = (data) => {
   if (sumPcs>0) {
     cartPcs.textContent = sumPcs; 
     cartPcs.style.display='block';
+    cartPcs1.textContent = sumPcs; 
+    cartPcs1.style.display='block';
   } else {
     cartPcs.style.display='none';
+    cartPcs1.style.display='none';
   }
 }
 
