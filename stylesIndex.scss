@@ -407,40 +407,81 @@ body {
   main {
 
     form {
-      display: flex;
-      position: fixed;
-      z-index: 98;
-      top: 100px;
 
-      @media screen and (max-width: 815px) {
-        top: 20px;
-        width: 60px;
+      .top {
+        display: flex;
+        position: fixed;
+        z-index: 98;
+        top: 100px;
+  
+        @media screen and (max-width: 815px) {
+          top: 20px;
+          width: 60px;
+        }
+
+        .filterItem {
+          margin: 10px 30px;
+  
+          input {
+            width: 100px;
+            border: none;
+            background-color: white;
+            opacity: 60%;
+            border-bottom: 2px solid #F68E5F;
+           
+  
+            &:focus{
+              outline: none;
+            }
+          }
+  
+          select {
+            opacity: 60%;
+            color: #F68E5F;
+            border: none;
+            border-bottom: 2px solid #F68E5F;
+            &:focus{
+              outline: none;
+            }
+          }
+        }
       }
+     
 
-      .filterItem {
-        margin: 10px 30px;
+      .forPrice {
+        position: absolute;
+        z-index: 98;
+        top: 100px;
+        right: 40px;
+
+        @media screen and (max-width: 1200px) {
+          display: none;
+        }
+        
 
         input {
-          width: 100px;
+          width: 50px;
           border: none;
           background-color: white;
           opacity: 60%;
           border-bottom: 2px solid #F68E5F;
-         
 
           &:focus{
             outline: none;
           }
         }
 
-        select {
-          opacity: 60%;
-          color: #F68E5F;
-          border: none;
-          border-bottom: 2px solid #F68E5F;
-          &:focus{
-            outline: none;
-          }
+        label {
+          margin: 0 10px;
+        }
+
+        button {
+          padding: 2px 5px;
+          background-color: #F68E5F;
+          color: whitesmoke;
+          border: 1px solid #F68E5F;
+          border-radius: 5px;
+          margin-left: 20px;
         }
       }
     }
@@ -461,7 +502,7 @@ body {
     }
 
     #products {
-      margin: 100px auto;
+      margin: 120px auto;
       display: grid;
       margin-left: 30%;
       width: 69vw;

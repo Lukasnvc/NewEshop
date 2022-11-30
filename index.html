@@ -86,24 +86,34 @@
 
   <main>
     <form>
-      <div class="filterItem">
-        <label for="color">Color :</label>
-        <select name="color" id="filterColor">
-          <option value="">all</option>
-          <option value="black">Black</option>
-          <option value="white">White</option>
-          <option value="brown">Brown</option>
-          <option value="pink">Pink</option>
-          <option value="green">Green</option>
-          <option value="grey">Grey</option>
-          <option value="red">Red</option>
-          <option value="blue">Blue</option>
-        </select>
+      <div class="top">
+        <div class="filterItem">
+          <label for="color">Color :</label>
+          <select name="color" id="filterColor">
+            <option value="">all</option>
+            <option value="black">Black</option>
+            <option value="white">White</option>
+            <option value="brown">Brown</option>
+            <option value="pink">Pink</option>
+            <option value="green">Green</option>
+            <option value="grey">Grey</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+          </select>
+        </div>
+        <div class="filterItem">
+          <label for="search">Search :</label>
+          <input type="text" name="search" id="filterSearch">
+        </div>
       </div>
-      <div class="filterItem">
-        <label for="search">Search :</label>
-        <input type="text" name="search" id="filterSearch">
+      <div class="filterItem forPrice">
+        <label for="price1">$:</label>
+        <input type="number" name="price1" id="filterPrice1" required>
+        <label for="price2">$$:</label>
+        <input type="number" name="price2" id="filterPrice2" required>
+        <button id="filterPriceBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
+
     </form>
     <img id="slide" src="">
     <div id="products">

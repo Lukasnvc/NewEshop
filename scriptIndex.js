@@ -12,6 +12,9 @@ const cart = document.querySelector('#cart');
 const mobileNav = document.querySelector('#mobileNav');
 const mobileList = document.querySelector('#mobileList');
 const closeBtn = document.querySelector('#closeBtn');
+const filterPrice1 = document.querySelector('#filterPrice1');
+const filterPrice2 = document.querySelector('#filterPrice2');
+const filterPriceBtn = document.querySelector('#filterPriceBtn');
 
 const mainIndex1 = document.querySelector('#mainIndex1');
 const tshirts1 = document.querySelector('#tshirts1');
@@ -125,7 +128,8 @@ const getData = () => {
   search(data);
   colorSearch(data);
   stateCheck();
-  cartCheck(data)
+  cartCheck(data);
+  priceRangeFilter(data);
 })
 }
 
@@ -602,6 +606,30 @@ const addLike = (like) => {
   const email = localStorage.getItem('email');
   localStorage.setItem('likedArray', like);
   userLikes(id,username,password,like,email);
-
 }
 
+const priceRangeFilter = (data) => {
+  filterPriceBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    if (filterPrice1.value != '' && filterPrice2.value != '') {
+    const filteredPrice = [];
+    data.forEach(product => {
+      if (product.price >= filterPrice1.value && product.price <= filterPrice2.value) {
+        filteredPrice.push(product)
+      }
+    })
+    if (filteredPrice.length>0){
+      products.innerHTML=null;
+      draw(filteredPrice);
+      } else {
+      products.innerHTML=null;
+      getData()
+      }
+  } else if (filterPrice1.value == '') {
+    filterPrice1.value = 0;
+  } else if (filterPrice2.value == '') {
+    filterPrice2.value = 999;
+  }
+  
+  })
+}

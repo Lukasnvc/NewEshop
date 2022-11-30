@@ -359,39 +359,71 @@ body header nav .cart #cartsDp #cartTotal {
   right: 100px;
   bottom: 15px;
 }
-body main form {
+body main form .top {
   display: flex;
   position: fixed;
   z-index: 98;
   top: 100px;
 }
 @media screen and (max-width: 815px) {
-  body main form {
+  body main form .top {
     top: 20px;
     width: 60px;
   }
 }
-body main form .filterItem {
+body main form .top .filterItem {
   margin: 10px 30px;
 }
-body main form .filterItem input {
+body main form .top .filterItem input {
   width: 100px;
   border: none;
   background-color: white;
   opacity: 60%;
   border-bottom: 2px solid #F68E5F;
 }
-body main form .filterItem input:focus {
+body main form .top .filterItem input:focus {
   outline: none;
 }
-body main form .filterItem select {
+body main form .top .filterItem select {
   opacity: 60%;
   color: #F68E5F;
   border: none;
   border-bottom: 2px solid #F68E5F;
 }
-body main form .filterItem select:focus {
+body main form .top .filterItem select:focus {
   outline: none;
+}
+body main form .forPrice {
+  position: absolute;
+  z-index: 98;
+  top: 100px;
+  right: 40px;
+}
+@media screen and (max-width: 1200px) {
+  body main form .forPrice {
+    display: none;
+  }
+}
+body main form .forPrice input {
+  width: 50px;
+  border: none;
+  background-color: white;
+  opacity: 60%;
+  border-bottom: 2px solid #F68E5F;
+}
+body main form .forPrice input:focus {
+  outline: none;
+}
+body main form .forPrice label {
+  margin: 0 10px;
+}
+body main form .forPrice button {
+  padding: 2px 5px;
+  background-color: #F68E5F;
+  color: whitesmoke;
+  border: 1px solid #F68E5F;
+  border-radius: 5px;
+  margin-left: 20px;
 }
 body main #slide {
   position: fixed;
@@ -410,7 +442,7 @@ body main #slide {
   }
 }
 body main #products {
-  margin: 100px auto;
+  margin: 120px auto;
   display: grid;
   margin-left: 30%;
   width: 69vw;
